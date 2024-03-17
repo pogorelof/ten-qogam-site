@@ -2,7 +2,7 @@
 @section('title', 'Главная страница')
 
 @section('main')
-<main>
+<main class="bg-gray-50">
     <div class="bg-gray-300 text-center py-8 space-y-6 shadow-lg shadow-gray-400">
         <form action="" class="flex flex-col md:block items-center space-y-3 md:space-y-0">
             <input type="search" class="rounded p-3 w-full md:w-1/4 " placeholder="Что ищете?">
@@ -59,7 +59,7 @@
                     </p>
                 </a>
                 <a href="" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="uploads/1.png">
+                    <img class="rounded-lg h-80 w-72" src="uploads/article/1.png">
                 </a>
                 <div class="text-center">
                     <p class="text-xl">
@@ -81,7 +81,7 @@
                     </p>
                 </a>
                 <a href="" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="uploads/2.jpg">
+                    <img class="rounded-lg h-80 w-72" src="uploads/article/2.jpg">
                 </a>
                 <div class="text-center">
                     <p class="text-xl">
@@ -103,7 +103,7 @@
                     </p>
                 </a>
                 <a href="" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="uploads/3.png">
+                    <img class="rounded-lg h-80 w-72" src="uploads/article/3.png">
                 </a>
                 <div class="text-center">
                     <p class="text-xl">
