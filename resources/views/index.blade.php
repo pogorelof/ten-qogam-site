@@ -22,23 +22,12 @@
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-5 w-6/12 mx-auto gap-1">
+            @foreach($categories as $category)
             <a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
-                <img class="w-10" src="img/category/wheelchair.svg">
-                <p>Коляски</p>
+                <img class="w-10" src="{{$category->photo_path}}">
+                <p>{{$category->name}}</p>
             </a>
-            <a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
-                <img class="w-10" src="img/stroller.png">
-                <p>Коляски</p>
-            </a><a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
-                <img class="w-10" src="img/stroller.png">
-                <p>Коляски</p>
-            </a><a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
-                <img class="w-10" src="img/stroller.png">
-                <p>Коляски</p>
-            </a><a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
-                <img class="w-10" src="img/stroller.png">
-                <p>Коляски</p>
-            </a>
+            @endforeach
         </div>
     </div>
 
