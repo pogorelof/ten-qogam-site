@@ -39,12 +39,12 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-
+            @foreach($ads as $ad)
             <div
                 class="flex flex-col justify-between outline bg-gradient-to-b from-gray-100 to-gray-200 hover:to-gray-300 outline-gray-300 p-3 space-y-5 rounded-lg">
                 <a href="" class="text-center ">
                     <p class="text-2xl font-bold ">
-                        Коляска
+                        {{$ad->title}}
                     </p>
                 </a>
                 <a href="" class="mx-auto">
@@ -52,59 +52,20 @@
                 </a>
                 <div class="text-center">
                     <p class="text-xl">
-                        30 000 тенге
+                        @if($ad->price)
+                            {{$ad->price}} тенге
+                        @else
+                            Договорная
+                        @endif
                     </p>
                 </div>
                 <div class="flex justify-start items-center">
                     <p class="text-sm">
-                        Алматы, 22 января
+                        Алматы, {{$ad->created_at}}
                     </p>
                 </div>
             </div>
-
-            <div
-                class="flex flex-col justify-between outline bg-gradient-to-b from-gray-100 to-gray-200 hover:to-gray-300 outline-gray-300 p-3 space-y-5 rounded-lg">
-                <a href="" class="text-center ">
-                    <p class="text-2xl font-bold ">
-                        Перевозка
-                    </p>
-                </a>
-                <a href="" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="uploads/article/2.jpg">
-                </a>
-                <div class="text-center">
-                    <p class="text-xl">
-                        Договорная
-                    </p>
-                </div>
-                <div class="flex justify-start items-center">
-                    <p class="text-sm">
-                        Астана, 1 марта
-                    </p>
-                </div>
-            </div>
-
-            <div
-                class="flex flex-col justify-between outline bg-gradient-to-b from-gray-100 to-gray-200 hover:to-gray-300 outline-gray-300 p-3 space-y-5 rounded-lg">
-                <a href="" class="text-center ">
-                    <p class="text-2xl font-bold ">
-                        Костыли
-                    </p>
-                </a>
-                <a href="" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="uploads/article/3.png">
-                </a>
-                <div class="text-center">
-                    <p class="text-xl">
-                        5000 тенге
-                    </p>
-                </div>
-                <div class="flex justify-start items-center">
-                    <p class="text-sm">
-                        Шымкент, 19 февраля
-                    </p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </main>
