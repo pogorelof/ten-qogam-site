@@ -9,5 +9,9 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'photo_path'];
-    //TODO: BelongsTo article in future
+
+    public function ad()
+    {
+        return $this->belongsTo(Ad::class);
+    }
 }

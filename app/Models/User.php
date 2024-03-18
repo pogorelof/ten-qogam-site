@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(VerificationCode::class);
     }
+
+    public function ad()
+    {
+        return $this->belongsTo(Ad::class);
+    }
 }
