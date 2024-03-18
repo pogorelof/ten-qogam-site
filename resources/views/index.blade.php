@@ -23,7 +23,7 @@
 
         <div class="grid grid-cols-2 md:grid-cols-5 w-6/12 mx-auto gap-1">
             <a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
-                <img class="w-10" src="img/wheelchair.svg">
+                <img class="w-10" src="img/category/wheelchair.svg">
                 <p>Коляски</p>
             </a>
             <a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
