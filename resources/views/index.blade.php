@@ -61,7 +61,7 @@
                 </div>
                 <div class="flex justify-start items-center">
                     <p class="text-sm">
-                        Алматы, {{$ad->created_at}}
+                        Алматы, {{ date_format($ad->created_at, 'j F') }}
                     </p>
                 </div>
             </div>
