@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('phone_number', 11);
             $table->string('photo_path');
-            $table->string('price');
+            $table->string('price')->nullable();
             $table->string('status');
             $table->timestamps();
         });
