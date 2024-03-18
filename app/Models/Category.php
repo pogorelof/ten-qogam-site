@@ -12,6 +12,6 @@ class Category extends Model
 
     public function ad()
     {
-        return $this->belongsTo(Ad::class);
+        return $this->hasOne(Ad::class);
     }
 }

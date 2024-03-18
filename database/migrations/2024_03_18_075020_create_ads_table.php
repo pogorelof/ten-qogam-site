@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id')->constrained()->cascadeOnDelete();
-            //TODO: add city foreignId when city tables was created
+            $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('title', 100);
             $table->text('description');
             $table->string('phone_number', 11);

@@ -9,4 +9,9 @@ class City extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];
+
+    public function ad()
+    {
+        return $this->hasOne(Ad::class);
+    }
 }
