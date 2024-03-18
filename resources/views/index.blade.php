@@ -48,7 +48,7 @@
                     </p>
                 </a>
                 <a href="" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="uploads/article/1.png">
+                    <img class="rounded-lg h-80 w-72" src="{{$ad->photo_path}}">
                 </a>
                 <div class="text-center">
                     <p class="text-xl">
