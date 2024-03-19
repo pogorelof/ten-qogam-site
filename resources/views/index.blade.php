@@ -6,8 +6,8 @@
     <div class="bg-gray-300 text-center py-8 space-y-6 shadow-lg shadow-gray-400">
         <form action="" class="flex flex-col md:block items-center space-y-3 md:space-y-0">
             <input type="search" class="rounded p-3 w-full md:w-1/4 " placeholder="Что ищете?">
-            <select class="p-3 rounded h-12">
-                <option value="">Вся страна</option>
+            <select class="p-3 rounded h-12 w-2/12">
+                <option value="all">Вся страна</option>
                 @foreach($cities as $city)
                 <option value="{{$city->id}}">{{$city->name}}</option>
                 @endforeach
