@@ -24,7 +24,7 @@
         <div class="grid grid-cols-2 md:grid-cols-5 w-6/12 mx-auto gap-1">
             @foreach($categories as $category)
             <a href='{{route('category.index', $category->id)}}' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
-                <img class="w-10" src="{{$category->photo_path}}">
+                <img class="w-10" src="{{asset($category->photo_path)}}">
                 <p>{{$category->name}}</p>
             </a>
             @endforeach
@@ -48,7 +48,7 @@
                     </p>
                 </a>
                 <a href="" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="{{$ad->photo_path}}">
+                    <img class="rounded-lg h-80 w-72" src="{{asset($ad->photo_path)}}">
                 </a>
                 <div class="text-center">
                     <p class="text-xl">

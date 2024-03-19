@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index(Category $category)
     {
-        $ads = $category->ad;
+        $ads = $category->ad()->get();
         $context = [
             'category' => $category,
             'ads' => $ads,

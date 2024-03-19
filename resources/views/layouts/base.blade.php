@@ -11,9 +11,9 @@
 <body class="bg-gray-200">
 <header
     class="bg-gradient-to-b from-green-700 to-green-900 flex flex-col md:flex-row space-y-7 md:space-y-0 items-center justify-between py-5 px-3">
-    <a href='' class="flex items-center space-x-3">
+    <a href='{{route('home')}}' class="flex items-center space-x-3">
         <div class="bg-gradient-to-tl from-green-400 rounded-xl w-16 shadow-lg shadow-black">
-            <img class="" src="img/TQ.png">
+            <img class="" src="{{asset('img/TQ.png')}}">
         </div>
         <div>
             <p class="text-gray-300 text-2xl">Ten Qogam</p>
@@ -47,15 +47,15 @@
     <hr>
     <div class="flex flex-col items-start space-y-5 py-8 mx-auto w-11/12 text-sm font-light">
         <div class="flex space-x-1 items-center text-gray-500 w-10/12">
-            <img src="img/copy.svg" class="w-6">
+            <img src="{{asset('img/copy.svg')}}" class="w-6">
             <p class="">Ten Qogam 2022-2024</p>
         </div>
         <div class="text-gray-500 items-center flex space-x-2 w-10/12">
-            <img src="img/address.svg" class="w-6">
+            <img src="{{asset('img/address.svg')}}" class="w-6">
             <p>Алматы, Талдыарал 13/1 </p>
         </div>
         <div class="text-gray-500 items-center flex space-x-2 w-10/12">
-            <img src="img/wa.svg" class="w-6">
+            <img src="{{asset('img/wa.svg')}}" class="w-6">
             <p>+77713338080</p>
         </div>
     </div>
