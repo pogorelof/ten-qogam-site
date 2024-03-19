@@ -61,8 +61,7 @@
                 </div>
                 <div class="flex justify-start items-center">
                     <p class="text-sm">
-{{--                        TODO: сделай на вывод города, переменная ad->city->name --}}
-                        Алматы, {{ $ad->created_at->translatedFormat('j F') }}
+                        {{$ad->city->name}}, {{ $ad->created_at->translatedFormat('j F') }}
                     </p>
                 </div>
             </div>
