@@ -28,7 +28,7 @@
             <p class="text-red-500">{{$message}}</p>
             @enderror
             <div class="flex flex-col">
-                <a href="{{route('register_form')}}" class="text-green-700 hover:text-green-500">Нет аккаунта</a>
+                <a href="{{route('register')}}" class="text-green-700 hover:text-green-500">Нет аккаунта</a>
                 <a href="" class="text-green-700 hover:text-green-500">Забыли пароль</a>
             </div>
         </form>

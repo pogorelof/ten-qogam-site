@@ -64,7 +64,7 @@
                 class="w-full bg-green-700 p-2 rounded-lg text-white font-bold hover:cursor-pointer hover:bg-green-500">Зарегистрироваться</button>
 
         <div class="">
-            <a href="{{route('login_form')}}" class="text-green-700 hover:text-green-500">Уже есть аккаунт</a>
+            <a href="{{route('login')}}" class="text-green-700 hover:text-green-500">Уже есть аккаунт</a>
         </div>
     </form>
 </main>

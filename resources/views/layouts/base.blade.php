@@ -34,8 +34,8 @@
 
         @guest
             <div class="scale-75 md:scale-100 whitespace-nowrap">
-                <a href="{{route('login_form')}}" class="bg-white hover:bg-gray-300 p-4 text-md rounded-l">Логин</a>
-                <a href="{{route('register_form')}}" class="bg-white hover:bg-gray-300 p-4 text-md rounded-r">Регистрация</a>
+                <a href="{{route('login')}}" class="bg-white hover:bg-gray-300 p-4 text-md rounded-l">Логин</a>
+                <a href="{{route('register')}}" class="bg-white hover:bg-gray-300 p-4 text-md rounded-r">Регистрация</a>
             </div>
         @endguest
     </div>

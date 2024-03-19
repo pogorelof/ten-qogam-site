@@ -12,9 +12,9 @@ Route::get('/category/{category}', [CategoryController::class, 'index'])->name('
 Route::get('/detail/{ad}', [AdController::class, 'detail'])->name('ad.detail');
 
 Route::middleware('guest')->group(function (){
-   Route::get('login', [AuthController::class, 'login'])->name('login_form');
+   Route::get('login', [AuthController::class, 'login'])->name('login');
    Route::post('login', [AuthController::class, 'login_submit'])->name('login_submit');
-   Route::get('register', [AuthController::class, 'register'])->name('register_form');
+   Route::get('register', [AuthController::class, 'register'])->name('register');
    Route::post('register', [AuthController::class, 'register_submit'])->name('register_submit');
 });
 
