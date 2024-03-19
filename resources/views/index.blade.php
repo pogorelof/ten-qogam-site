@@ -42,12 +42,12 @@
             @foreach($ads as $ad)
             <div
                 class="flex flex-col justify-between outline bg-gradient-to-b from-gray-100 to-gray-200 hover:to-gray-300 outline-gray-300 p-3 space-y-5 rounded-lg">
-                <a href="" class="text-center ">
+                <a href="{{route('ad.detail', $ad->id)}}" class="text-center ">
                     <p class="text-2xl font-bold ">
                         {{$ad->title}}
                     </p>
                 </a>
-                <a href="" class="mx-auto">
+                <a href="{{route('ad.detail', $ad->id)}}" class="mx-auto">
                     <img class="rounded-lg h-80 w-72" src="{{asset($ad->photo_path)}}">
                 </a>
                 <div class="text-center">
