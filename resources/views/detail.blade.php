@@ -87,7 +87,9 @@
 
 {{--                        TODO: просмотры--}}
                         <p class="font-light text-gray-500 text-xs">Просмотров: 50</p>
-                        <a href="" class="font-light text-red-500 hover:text-red-600 text-sm">Жалоба</a>
+                        <button>
+                            <img src="{{asset('img/unlike.svg')}}" class="w-6 hover:scale-110">
+                        </button>
                     </div>
                 </div>
             </div>

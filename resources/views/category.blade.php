@@ -30,7 +30,7 @@
                     <div class="flex flex-col items-end justify-between p-3">
                         <div class="text-sm md:text-lg font-mono">
                             @if($ad->price)
-                                {{$ad->price}} тенге
+                                {{$ad->price}} тг
                             @else
                                 Договорная
                             @endif

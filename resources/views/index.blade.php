@@ -53,7 +53,7 @@
                 <div class="text-center">
                     <p class="text-xl">
                         @if($ad->price)
-                            {{$ad->price}} тенге
+                            {{$ad->price}} тг
                         @else
                             Договорная
                         @endif
