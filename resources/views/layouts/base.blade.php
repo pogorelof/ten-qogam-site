@@ -25,7 +25,7 @@
     <div>
         @auth
             <div class="scale-75 md:scale-100 whitespace-nowrap">
-                <a href="" class="bg-white hover:bg-gray-300 p-4 text-md rounded-l">Профиль</a>
+                <a href="{{route('profile')}}" class="bg-white hover:bg-gray-300 p-4 text-md rounded-l">Профиль</a>
                 <a href="" class="bg-white hover:bg-gray-300 p-4 text-md">Сообщения</a>
                 <a href="" class="bg-white hover:bg-gray-300 p-4 text-md">Выложить объявление</a>
                 <a href="{{'/logout'}}" class="bg-white hover:bg-gray-300 p-4 text-md rounded-r hover:bg-red-600">Выйти</a>

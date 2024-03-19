@@ -22,4 +22,5 @@ Route::middleware('auth')->group(function (){
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
     Route::view('verify','auth.verify')->name('verify');
     Route::post('verify', [AuthController::class, 'check_verify'])->name('check_verify');
+    Route::get('profile', [HomeController::class, 'profile'])->name('profile');
 });

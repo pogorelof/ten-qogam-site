@@ -19,4 +19,12 @@ class HomeController extends Controller
         ];
         return view('index', $context);
     }
+
+    public function profile()
+    {
+        $context = [
+          'user' => auth()->user(),
+        ];
+        return view('my_profile', $context);
+    }
 }
