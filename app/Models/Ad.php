@@ -28,4 +28,9 @@ class Ad extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function user_favorited()
+    {
+        return $this->belongsToMany(User::class, 'favorites', 'ad_id', 'user_id');
+    }
 }

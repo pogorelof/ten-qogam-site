@@ -14,4 +14,19 @@ class AdController extends Controller
         ];
         return view('detail', $context);
     }
+
+    public function add_favorite(Request $request, Ad $ad)
+    {
+        $user = auth()->user();
+        $user->favorite_ads()->attach($ad);
+
+        return redirect(url()->previous());
+    }
+    public function delete_favorite(Request $request, Ad $ad)
+    {
+        $user = auth()->user();
+        $user->favorite_ads()->detach($ad);
+
+        return redirect(url()->previous());
+    }
 }

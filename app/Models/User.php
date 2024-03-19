@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ad::class);
     }
+
+    public function favorite_ads()
+    {
+        return $this->belongsToMany(Ad::class, 'favorites', 'user_id', 'ad_id');
+    }
 }

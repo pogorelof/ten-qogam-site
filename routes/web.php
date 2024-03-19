@@ -23,4 +23,7 @@ Route::middleware('auth')->group(function (){
     Route::view('verify','auth.verify')->name('verify');
     Route::post('verify', [AuthController::class, 'check_verify'])->name('check_verify');
     Route::get('profile', [HomeController::class, 'profile'])->name('profile');
+
+    Route::post('add_favorite/{ad}', [AdController::class, 'add_favorite'])->name('favorite.add');
+    Route::post('delete_favorite/{ad}', [AdController::class, 'delete_favorite'])->name('favorite.delete');
 });
