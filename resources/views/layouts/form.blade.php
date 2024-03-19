@@ -9,7 +9,7 @@
 </head>
 
 <body class="bg-green-100 p-10">
-<a href="{{route('home')}}" class="">
+<a href="{{url()->previous()}}" class="">
     <img src="img/back.svg" class="w-10 hover:scale-110">
 </a>
 @yield('main')

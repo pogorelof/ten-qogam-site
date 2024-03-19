@@ -20,4 +20,6 @@ Route::middleware('guest')->group(function (){
 
 Route::middleware('auth')->group(function (){
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::view('verify','auth.verify')->name('verify');
+    Route::post('verify', [AuthController::class, 'check_verify'])->name('check_verify');
 });

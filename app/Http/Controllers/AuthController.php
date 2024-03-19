@@ -68,9 +68,23 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
-    public function check_verify()
+    public function check_verify(Request $request)
     {
-        //TODO: check verify
+        $validated = $request->validate([
+            'code' => 'required|max:6|min:6',
+        ]);
+
+        $user = auth()->user();
+        $verification_code = $user->verification_code->code;
+        $input_code = $validated['code'];
+
+        if($verification_code === $input_code){
+            $user->email_verified_at = now();
+            $user->verification_code->delete();
+            return redirect()->route('home');
+        }else{
+            return redirect()->route('verify')->withErrors(['lose' => 'Неверный код!']);
+        }
     }
 
     //help functions

@@ -18,7 +18,7 @@
             @foreach($ads as $ad)
             <div class="rounded bg-white shadow-lg shadow-gray-400 hover:shadow-gray-500">
                 <div class="flex justify-between">
-                    <a href="" class="flex">
+                    <a href="{{route('ad.detail', $ad->id)}}" class="flex">
                         <div class="w-24 h-32 md:w-48 md:h-36 overflow-hidden m-2">
                             <img src="{{asset($ad->photo_path)}}" class="object-cover w-full h-full ">
                         </div>
