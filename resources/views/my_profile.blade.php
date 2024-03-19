@@ -13,7 +13,7 @@
                     @foreach($user->ad()->get() as $ad)
                     <div class="rounded bg-white shadow-lg shadow-gray-400 hover:shadow-gray-500">
                         <div class="flex justify-between">
-                            <a href="" class="flex">
+                            <a href="{{route('ad.detail', $ad->id)}}" class="flex">
                                 <div class="w-24 h-32 md:w-48 md:h-36 overflow-hidden m-2">
                                     <img src="{{asset($ad->photo_path)}}" class="object-cover w-full h-full ">
                                 </div>
@@ -45,27 +45,36 @@
                 <p class="text-xl p-1 font-light outline outline-1 outline-yellow-600 rounded w-max">Избранное</p>
             </div>
             <div class="flex flex-col py-5 space-y-2">
-
+                @foreach(auth()->user()->favorite_ads as $ad)
                 <div class="rounded bg-white shadow-lg shadow-gray-400 hover:shadow-gray-500">
                     <div class="flex justify-between">
-                        <a href="" class="flex">
+                        <a href="{{route('ad.detail', $ad->id)}}" class="flex">
                             <div class="w-24 h-32 md:w-48 md:h-36 overflow-hidden m-2">
-                                <img src="img/1.png" class="object-cover w-full h-full ">
+                                <img src="{{asset($ad->photo_path)}}" class="object-cover w-full h-full ">
                             </div>
                             <div class="flex flex-col justify-between md:p-3">
-                                <div class="md:text-2xl font-light">Коляска</div>
-                                <div class="text-xs md:text-sm font-light">30 января - Алматы</div>
+                                <div class="md:text-2xl font-light">{{$ad->title}}</div>
+                                <div class="text-xs md:text-sm font-light">{{$ad->created_at->translatedFormat('j F')}} - {{$ad->city->name}}</div>
                             </div>
                         </a>
                         <div class="flex flex-col items-end justify-between p-3">
-                            <div class="text-sm md:text-lg font-mono">35000тг</div>
-                            <button>
-                                <img src="img/like.svg" class="w-6">
-                            </button>
+                            <div class="text-sm md:text-lg font-mono">
+                                @if($ad->price)
+                                    {{$ad->price}} тг
+                                @else
+                                    Договорная
+                                @endif
+                            </div>
+                            <form action="{{route('favorite.delete', $ad->id)}}" method="POST">
+                                @csrf
+                                <button>
+                                    <img src="{{asset('img/like.svg')}}" class="w-6 hover:scale-110">
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
-
+                @endforeach
             </div>
         </div>
     </main>

@@ -53,7 +53,7 @@
                                 <img class="w-12 h-12" src="{{asset($ad->user->photo_path)}}">
                             </div>
                             <div>
-                                <p class="text-xl font-light">Владимир</p>
+                                <p class="text-xl font-light">{{$ad->user->name}}</p>
                                 <p class="text-sm font-extralight">на сайте с {{$ad->user->created_at->translatedFormat('F Y')}}</p>
                             </div>
                         </div>
@@ -87,9 +87,23 @@
 
 {{--                        TODO: просмотры--}}
                         <p class="font-light text-gray-500 text-xs">Просмотров: 50</p>
-                        <button>
-                            <img src="{{asset('img/unlike.svg')}}" class="w-6 hover:scale-110">
-                        </button>
+                        @if(auth()->check())
+                            @if(auth()->user()->favorite_ads->contains($ad))
+                                <form action="{{route('favorite.delete', $ad->id)}}" method="POST">
+                                    @csrf
+                                    <button>
+                                        <img src="{{asset('img/like.svg')}}" class="w-6 hover:scale-110">
+                                    </button>
+                                </form>
+                            @else
+                                <form action="{{route('favorite.add', $ad->id)}}" method="POST">
+                                    @csrf
+                                    <button>
+                                        <img src="{{asset('img/unlike.svg')}}" class="w-6 hover:scale-110">
+                                    </button>
+                                </form>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>

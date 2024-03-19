@@ -35,20 +35,22 @@
                                 Договорная
                             @endif
                         </div>
-                        @if(auth()->user()->favorite_ads->contains($ad))
-                            <form action="{{route('favorite.delete', $ad->id)}}" method="POST">
-                                @csrf
-                                <button>
-                                    <img src="{{asset('img/like.svg')}}" class="w-6 hover:scale-110">
-                                </button>
-                            </form>
-                        @else
-                            <form action="{{route('favorite.add', $ad->id)}}" method="POST">
-                                @csrf
-                                <button>
-                                    <img src="{{asset('img/unlike.svg')}}" class="w-6 hover:scale-110">
-                                </button>
-                            </form>
+                        @if(auth()->check())
+                            @if(auth()->user()->favorite_ads->contains($ad))
+                                <form action="{{route('favorite.delete', $ad->id)}}" method="POST">
+                                    @csrf
+                                    <button>
+                                        <img src="{{asset('img/like.svg')}}" class="w-6 hover:scale-110">
+                                    </button>
+                                </form>
+                            @else
+                                <form action="{{route('favorite.add', $ad->id)}}" method="POST">
+                                    @csrf
+                                    <button>
+                                        <img src="{{asset('img/unlike.svg')}}" class="w-6 hover:scale-110">
+                                    </button>
+                                </form>
+                            @endif
                         @endif
                     </div>
                 </div>
