@@ -8,7 +8,7 @@
     <title>@yield('title')</title>
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-200">
 <header
     class="bg-gradient-to-b from-green-700 to-green-900 flex flex-col md:flex-row space-y-7 md:space-y-0 items-center justify-between py-5 px-3">
     <a href='' class="flex items-center space-x-3">

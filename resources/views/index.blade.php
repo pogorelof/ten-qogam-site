@@ -2,7 +2,7 @@
 @section('title', 'Главная страница')
 
 @section('main')
-<main class="bg-gray-50">
+<main class="bg-gray-50 pb-6">
     <div class="bg-gray-300 text-center py-8 space-y-6 shadow-lg shadow-gray-400">
         <form action="" class="flex flex-col md:block items-center space-y-3 md:space-y-0">
             <input type="search" class="rounded p-3 w-full md:w-1/4 " placeholder="Что ищете?">
@@ -23,7 +23,7 @@
 
         <div class="grid grid-cols-2 md:grid-cols-5 w-6/12 mx-auto gap-1">
             @foreach($categories as $category)
-            <a href='' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
+            <a href='{{route('category.index', $category->id)}}' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md">
                 <img class="w-10" src="{{$category->photo_path}}">
                 <p>{{$category->name}}</p>
             </a>
