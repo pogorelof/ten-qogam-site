@@ -8,9 +8,9 @@
             <input type="search" class="rounded p-3 w-full md:w-1/4 " placeholder="Что ищете?">
             <select class="p-3 rounded h-12">
                 <option value="">Вся страна</option>
-                <option value="">Алматы</option>
-                <option value="">Астана</option>
-                <option value="">Шымкент</option>
+                @foreach($cities as $city)
+                <option value="{{$city->id}}">{{$city->name}}</option>
+                @endforeach
             </select>
             <button class="p-3 w-24 bg-gray-200 hover:bg-gray-400 rounded text-gray-600 border border-gray-400"
                     type="submit">Поиск
