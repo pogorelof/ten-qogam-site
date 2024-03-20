@@ -8,7 +8,11 @@
     <title>@yield('title')</title>
 </head>
 
-<body class="bg-green-100 p-10">
+@php
+    $mode = Request::session()->get('mode');
+@endphp
+
+<body class="bg-green-100 p-10 @if($mode == 'vi') text-xl @endif">
 @if($previous = url()->previous())
     <a href="{{$previous}}" class="">
         <img src="img/back.svg" class="w-10 hover:scale-110">

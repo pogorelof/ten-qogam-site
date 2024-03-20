@@ -3,6 +3,14 @@
 {{--@section('title')--}}
 
 @section('main')
+    @if(!auth()->user()->email_verified_at)
+        <div class="text-white m-2">
+            <a href="{{route('verify')}}" class="bg-green-800 hover:bg-green-700 p-1 rounded">
+                Подтвердите аккаунт
+            </a>
+        </div>
+    @endif
+
     <main class="md:w-10/12 mx-auto grid md:grid-cols-2 gap-2">
         <div class="bg-white rounded-xl mt-5 md:p-5 h-max">
             <div class="py-3">

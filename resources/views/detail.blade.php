@@ -2,6 +2,10 @@
 
 @section('title', $ad->title)
 
+@php
+    $mode = Request::session()->get('mode');
+@endphp
+
 @section('main')
     <main>
         <div class="mx-auto w-11/12 py-3">
@@ -19,7 +23,7 @@
                 <div class="bg-white rounded-lg p-5 flex flex-col justify-around space-y-4">
                     <div>
                         <p class="text-xl font-bold">{{$ad->title}} </p>
-                        <p class="text-xs font-thin">{{$ad->city->name}}</p>
+                        <p class="text-xs @if($mode == 'vi') font-bold text-black @else font-thin @endif ">{{$ad->city->name}}</p>
                     </div>
                     <div>
                         <p class="text-xl font-light ">
@@ -81,12 +85,12 @@
                     </p>
                 </div>
                 <div class="py-3 space-y-4">
-                    <hr>
+                    <hr class="@if($mode == 'vi') border-black @endif">
                     <div class="flex justify-between">
-                        <p class="font-light text-gray-500 text-xs">{{$ad->created_at->translatedFormat('j F')}}</p>
+                        <p class="font-light text-xs @if($mode == 'vi') text-black @else text-gray-500 @endif">{{$ad->created_at->translatedFormat('j F')}}</p>
 
 {{--                        TODO: просмотры--}}
-                        <p class="font-light text-gray-500 text-xs">Просмотров: 50</p>
+                        <p class="font-light text-xs @if($mode == 'vi') text-black @else text-gray-500 @endif">Просмотров: 50</p>
                         @if(auth()->check())
                             @if(auth()->user()->favorite_ads->contains($ad))
                                 <form action="{{route('favorite.delete', $ad->id)}}" method="POST">

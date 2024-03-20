@@ -87,6 +87,7 @@ class AuthController extends Controller
         if ($verification_code === $input_code) {
             $user->email_verified_at = now();
             $user->verification_code->delete();
+            $user->save();
             return redirect()->route("home");
         } else {
             return redirect()
