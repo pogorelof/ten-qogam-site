@@ -15,6 +15,12 @@ class AdController extends Controller
         return view('detail', $context);
     }
 
+    public function delete_ad(Ad $ad)
+    {
+        $ad->delete();
+        return redirect('profile');
+    }
+
     public function add_favorite(Request $request, Ad $ad)
     {
         $user = auth()->user();

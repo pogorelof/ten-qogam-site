@@ -26,4 +26,6 @@ Route::middleware('auth')->group(function (){
 
     Route::post('add_favorite/{ad}', [AdController::class, 'add_favorite'])->name('favorite.add');
     Route::post('delete_favorite/{ad}', [AdController::class, 'delete_favorite'])->name('favorite.delete');
+
+    Route::post('delete_ad/{ad}', [AdController::class, 'delete_ad'])->name('ad.delete');
 });

@@ -33,10 +33,12 @@
                                         Договорная
                                     @endif
                                 </div>
-                                <button>
-                                    {{--                                    TODO: delete button--}}
-                                    <img src="img/trash.svg" class="w-6">
-                                </button>
+                                <form action="{{route('ad.delete', $ad->id)}}" method="POST">
+                                    @csrf
+                                    <button>
+                                        <img src="img/trash.svg" class="w-6">
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </div>
