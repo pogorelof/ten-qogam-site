@@ -11,32 +11,38 @@ class AuthController extends Controller
     //TODO: забыл пароль, смена пароля
     public function login()
     {
-        return view('auth.login');
+        return view("auth.login");
     }
 
     public function login_submit(Request $request)
     {
         $validated = $request->validate([
-            'email' => 'required|email|string',
-            'password' => 'required'
+            "email" => "required|email|string",
+            "password" => "required",
         ]);
 
-        if(auth()->attempt(['email'=>$validated['email'], 'password'=>$validated['password']])){
-            return redirect()->route('home');
+        if (
+            auth()->attempt([
+                "email" => $validated["email"],
+                "password" => $validated["password"],
+            ])
+        ) {
+            return redirect()->route("home");
         }
-        return redirect()->route('login_form')->withErrors(['lose'=>'Ошибка в данных!']);
+        return redirect()
+            ->route("login")
+            ->withErrors(["lose" => "Ошибка в данных!"]);
     }
 
     public function logout()
     {
-
         auth()->logout();
-        return redirect()->route('home');
+        return redirect()->route("home");
     }
 
     public function register()
     {
-        return view('auth.register');
+        return view("auth.register");
     }
 
     public function register_submit(Request $request)
@@ -51,39 +57,41 @@ class AuthController extends Controller
         ]);
 
         $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
-            'photo_path' => "uploads/user/{$validated['photo']}"
+            "name" => $validated["name"],
+            "email" => $validated["email"],
+            "password" => bcrypt($validated["password"]),
+            "photo_path" => "uploads/user/{$validated["photo"]}",
         ]);
 
         $code = $this->generate_verify_code();
-        $user->verification_code()->create(['code'=>$code]);
+        $user->verification_code()->create(["code" => $code]);
         $this->send_verify_code($user);
 
-        if($user){
+        if ($user) {
             auth()->login($user);
         }
 
-        return redirect()->route('home');
+        return redirect()->route("home");
     }
 
     public function check_verify(Request $request)
     {
         $validated = $request->validate([
-            'code' => 'required|max:6|min:6',
+            "code" => "required|max:6|min:6",
         ]);
 
         $user = auth()->user();
         $verification_code = $user->verification_code->code;
-        $input_code = $validated['code'];
+        $input_code = $validated["code"];
 
-        if($verification_code === $input_code){
+        if ($verification_code === $input_code) {
             $user->email_verified_at = now();
             $user->verification_code->delete();
-            return redirect()->route('home');
-        }else{
-            return redirect()->route('verify')->withErrors(['lose' => 'Неверный код!']);
+            return redirect()->route("home");
+        } else {
+            return redirect()
+                ->route("verify")
+                ->withErrors(["lose" => "Неверный код!"]);
         }
     }
 
