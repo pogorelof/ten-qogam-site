@@ -41,7 +41,7 @@
                                     <form action="unarchive/2" method="POST">
                                         @csrf
                                         <button>
-                                            <img src="img/trash.svg" class="w-6 hover:scale-110">
+                                            <img src="img/restore.svg" class="w-8 hover:scale-110">
                                         </button>
                                     </form>
                                 </div>
