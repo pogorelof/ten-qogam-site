@@ -22,7 +22,7 @@ class AdSeeder extends Seeder
             'phone_number' => '77085875150',
             'photo_path' => 'uploads/article/1.png',
             'price' => '50000',
-            'status' => 'POSTED'
+//            'status' => 'POSTED'
         ]);
 
         Ad::create([
@@ -34,7 +34,7 @@ class AdSeeder extends Seeder
             'phone_number' => '77085875150',
             'photo_path' => 'uploads/article/2.jpg',
             'price' => null,
-            'status' => 'POSTED'
+//            'status' => 'POSTED'
         ]);
 
         Ad::create([
@@ -46,7 +46,7 @@ class AdSeeder extends Seeder
             'phone_number' => '77085875150',
             'photo_path' => 'uploads/article/3.png',
             'price' => '5000',
-            'status' => 'POSTED'
+//            'status' => 'POSTED'
         ]);
 
         Ad::create([
@@ -58,7 +58,7 @@ class AdSeeder extends Seeder
             'phone_number' => '77085875150',
             'photo_path' => 'uploads/article/3.png',
             'price' => '5000',
-            'status' => 'POSTED'
+//            'status' => 'POSTED'
         ]);
     }
 }

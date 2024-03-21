@@ -17,18 +17,21 @@ class UserSeeder extends Seeder
             'name' => 'user1',
             'email' => '1@user',
             'password' => 'user',
+            'email_verified_at' => now(),
             'photo_path' => 'uploads/user/1.jpg',
         ]);
         User::create([
             'name' => 'user2',
             'email' => '2@user',
             'password' => 'user',
+            'email_verified_at' => now(),
             'photo_path' => 'uploads/user/2.png',
         ]);
         User::create([
             'name' => 'user3',
             'email' => '3@user',
             'password' => 'user',
+            'email_verified_at' => now(),
             'photo_path' => 'uploads/user/3.png',
         ]);
     }

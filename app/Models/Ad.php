@@ -4,15 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Ad extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'user_id', 'category_id', 'title', 'description',
         'phone_number', 'photo_path', 'price', 'status',
         'city_id'
     ];
+    protected $dates = ['deleted_at'];
 
     public function category()
     {
