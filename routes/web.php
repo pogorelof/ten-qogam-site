@@ -29,5 +29,8 @@ Route::middleware('auth')->group(function (){
     Route::post('add_favorite/{ad}', [AdController::class, 'add_favorite'])->name('favorite.add');
     Route::post('delete_favorite/{ad}', [AdController::class, 'delete_favorite'])->name('favorite.delete');
 
-    Route::post('delete_ad/{ad}', [AdController::class, 'delete_ad'])->name('ad.delete');
+    Route::post('delete_ad/{ad}', [AdController::class, 'delete'])->name('ad.delete');
+
+    Route::get('archive', [AdController::class, 'archive'])->name('ad.archive');
+    Route::post('unarchive/{ad}', [AdController::class, 'unarchive'])->name('ad.unarchive')->withTrashed();
 });

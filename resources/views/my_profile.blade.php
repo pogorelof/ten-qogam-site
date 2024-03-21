@@ -16,7 +16,7 @@
             <div class="py-3 flex items-center justify-between">
                 <p class="text-xl p-1 font-light outline outline-1 outline-green-600 rounded w-max">Мои
                     Объявления</p>
-                <a href="" class="font-light text-gray-400 hover:text-gray-500">Архив</a>
+                <a href="{{route('ad.archive')}}" class="font-light text-gray-400 hover:text-gray-500">Архив</a>
             </div>
             <div class="flex flex-col py-5 space-y-2">
                 @if(count(auth()->user()->ad()->get()) != 0)
