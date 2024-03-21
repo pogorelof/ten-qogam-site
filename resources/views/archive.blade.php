@@ -4,7 +4,13 @@
 
 @section('main')
     <main>
-        <div class="bg-white rounded-xl mt-5 md:p-5 h-max">
+        <div class="mx-auto w-11/12 py-3">
+            <a href="{{route('profile')}}" class="flex items-center font-light p-1 rounded outline-gray-500 hover:bg-gradient-to-r hover:from-gray-300 hover:to-gray-200">
+                <img src="{{asset('img/back.svg')}}" class="w-5" alt="">
+                <p>Назад</p>
+            </a>
+        </div>
+        <div class="bg-white rounded-xl mt-5 md:p-5 h-max w-6/12 mx-auto">
             <div class="py-3">
                 <p class="text-xl p-1 font-light outline outline-1 outline-gray-600 rounded w-max">Архив</p>
             </div>
