@@ -13,9 +13,10 @@
 
     <main class="md:w-10/12 mx-auto grid md:grid-cols-2 gap-2">
         <div class="bg-white rounded-xl mt-5 md:p-5 h-max">
-            <div class="py-3">
+            <div class="py-3 flex items-center justify-between">
                 <p class="text-xl p-1 font-light outline outline-1 outline-green-600 rounded w-max">Мои
                     Объявления</p>
+                <a href="" class="font-light text-gray-400 hover:text-gray-500">Архив</a>
             </div>
             <div class="flex flex-col py-5 space-y-2">
                 @if(count(auth()->user()->ad()->get()) != 0)
@@ -44,7 +45,7 @@
                                 <form action="{{route('ad.delete', $ad->id)}}" method="POST">
                                     @csrf
                                     <button>
-                                        <img src="img/trash.svg" class="w-6">
+                                        <img src="img/trash.svg" class="w-6 hover:scale-110">
                                     </button>
                                 </form>
                             </div>

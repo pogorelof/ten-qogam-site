@@ -15,6 +15,15 @@ class AdController extends Controller
         return view('detail', $context);
     }
 
+    public function archive()
+    {
+        $context = [
+            'ads' => Ad::onlyTrashed(),
+        ];
+
+        
+    }
+
     public function delete_ad(Ad $ad)
     {
         $ad->delete();
