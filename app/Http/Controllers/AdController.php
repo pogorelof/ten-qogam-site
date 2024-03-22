@@ -38,7 +38,7 @@ class AdController extends Controller
     public function add(Request $request)
     {
         $validated = $request->validate([
-//            'photo' => 'required',
+            'photo' => 'required',
             'name' => 'required',
             'price' => 'nullable|numeric',
             'description' => 'min:5',
