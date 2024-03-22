@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Category;
+use App\Models\City;
 use Illuminate\Http\Request;
 
 class AdController extends Controller
@@ -26,12 +28,43 @@ class AdController extends Controller
 
     public function add_form()
     {
-     return view('adform');
+        $context = [
+            'categories' => Category::get(),
+            'cities' => City::get(),
+        ];
+        return view('adform', $context);
     }
 
-    public function add()
+    public function add(Request $request)
     {
+        $validated = $request->validate([
+//            'photo' => 'required',
+            'name' => 'required',
+            'price' => 'nullable|numeric',
+            'description' => 'min:5',
+            'phone' => 'max:12|min:12',
+        ]);
 
+        $user = auth()->user();
+        $ad = [
+            'title' => $validated['name'],
+            'price' => $validated['price'],
+            'description' => $validated['description'],
+            'phone_number' => $validated['phone'],
+            'category_id' => $request['category'],
+            'city_id' => $request['city'],
+        ];
+
+        if($request['photo']){
+            $file = $request->file('photo');
+            $file_name = (string) time() . '_'. $file->getClientOriginalName();
+            $file->move(public_path('uploads/article'), $file_name);
+            $ad['photo_path'] = 'uploads/article/' . $file_name;
+        }
+
+        $user->ad()->create($ad);
+
+        return redirect()->route('profile');
     }
 
     public function unarchive(Ad $ad)
@@ -53,6 +86,7 @@ class AdController extends Controller
 
         return redirect(url()->previous());
     }
+
     public function delete_favorite(Request $request, Ad $ad)
     {
         $user = auth()->user();

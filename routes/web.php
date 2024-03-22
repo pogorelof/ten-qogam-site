@@ -35,4 +35,5 @@ Route::middleware('auth')->group(function (){
     Route::post('unarchive/{ad}', [AdController::class, 'unarchive'])->name('ad.unarchive')->withTrashed();
 
     Route::get('add', [AdController::class, 'add_form'])->name('ad.add');
+    Route::post('add', [AdController::class, 'add'])->name('ad.submit');
 });

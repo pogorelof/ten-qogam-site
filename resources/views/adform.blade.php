@@ -24,10 +24,11 @@
             <div class="">
                 <p class="text-2xl font-light">ВЫЛОЖИТЬ ОБЪЯВЛЕНИЕ</p>
             </div>
-            <form action="" class="space-y-3">
+            <form action="{{route('ad.submit')}}" method="POST" class="space-y-3" enctype="multipart/form-data">
+                @csrf
                 <div class="flex flex-col space-y-2">
                     <label for="" class="text-xl font-light">Вставить фотографию</label>
-                    <input type="file" class="
+                    <input name="photo" type="file" class="
                     file:border-0 file:bg-green-700 file:rounded-lg file:p-2
                     file:hover:bg-green-600 file:hover:cursor-pointer
                     file:text-white
@@ -36,22 +37,22 @@
 
                 <div class="flex flex-col space-y-2">
                     <label for="" class="text-xl font-light">Название</label>
-                    <input type="text" class="border p-2 rounded-md" placeholder="Название">
+                    <input name="name" type="text" class="border p-2 rounded-md" placeholder="Название">
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-3">
                     <div class="flex flex-col space-y-2">
-                        <label for="" class="text-xl font-light">Цена</label>
-                        <input type="text" class="border p-2 rounded-md" placeholder="Цена, тенге">
+                        <label for="" class="text-xl font-light flex items-center">Цена <p class="text-sm">(Оставьте пустым если цена договорная)</p> </label>
+                        <input name="price" type="text" class="border p-2 rounded-md" placeholder="Цена, тенге">
                     </div>
 
                     <div class="flex flex-col space-y-2">
                         <label for="" class="text-xl font-light">Категория</label>
-                        <select class="border p-2 rounded-md w-full" style="width: 50%;height: 38px;">
+                        <select class="border p-2 rounded-md w-full" name="category" style="width: 50%;height: 38px;">
                             <optgroup label="Категории">
-                                <option value="12">Коляски</option>
-                                <option value="13">Услуги</option>
-                                <option value="14">Оборудование</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
                             </optgroup>
                         </select>
                     </div>
@@ -59,22 +60,22 @@
 
                 <div class="flex flex-col space-y-2">
                     <label for="" class="text-xl font-light">Описание</label>
-                    <textarea type="text" class="border p-2 rounded-md resize-none h-36"></textarea>
+                    <textarea name="description" type="text" class="border p-2 rounded-md resize-none h-36"></textarea>
                 </div>
 
                 <div class="grid md:grid-cols-2 gap-3">
                     <div class="flex flex-col space-y-2">
                         <label for="" class="text-xl font-light">Номер телефона</label>
-                        <input type="text" class="border p-2 rounded-md" value="+7">
+                        <input name="phone" type="text" class="border p-2 rounded-md" value="+7">
                     </div>
 
                     <div class="flex flex-col space-y-2">
                         <label for="" class="text-xl font-light">Город, область</label>
-                        <select class="border p-2 rounded-md w-full" style="width: 50%;height: 38px;">
-                            <optgroup label="Категории">
-                                <option value="12">Алматы</option>
-                                <option value="13">Астана</option>
-                                <option value="14">Шымкент</option>
+                        <select class="border p-2 rounded-md w-full" name="city" style="width: 50%;height: 38px;">
+                            <optgroup label="Город, область">
+                                @foreach($cities as $city)
+                                    <option value="{{$city->id}}">{{$city->name}}</option>
+                                @endforeach
                             </optgroup>
                         </select>
                     </div>
