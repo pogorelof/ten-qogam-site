@@ -24,6 +24,16 @@ class AdController extends Controller
         return view('archive', $context);
     }
 
+    public function add_form()
+    {
+     return view('adform');
+    }
+
+    public function add()
+    {
+
+    }
+
     public function unarchive(Ad $ad)
     {
         $ad->restore();
