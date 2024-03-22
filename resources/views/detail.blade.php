@@ -9,10 +9,18 @@
 @section('main')
     <main>
         <div class="mx-auto w-11/12 py-3">
-            <a href="{{url()->previous()}}" class="flex items-center font-light p-1 rounded outline-gray-500 hover:bg-gradient-to-r hover:from-gray-300 hover:to-gray-200">
-                <img src="{{asset('img/back.svg')}}" class="w-5" alt="">
-                <p>Назад</p>
-            </a>
+            @if($previous = url()->previous())
+                <a href="{{$previous}}" class="flex items-center font-light p-1 rounded outline-gray-500 hover:bg-gradient-to-r hover:from-gray-300 hover:to-gray-200">
+                    <img src="{{asset('img/back.svg')}}" class="w-5" alt="">
+                    <p>Назад</p>
+                </a>
+            @else
+                <a href="{{route('home')}}" class="flex items-center font-light p-1 rounded outline-gray-500 hover:bg-gradient-to-r hover:from-gray-300 hover:to-gray-200">
+                    <img src="{{asset('img/back.svg')}}" class="w-5" alt="">
+                    <p>Назад</p>
+                </a>
+            @endif
+
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 mx-auto gap-2 w-11/12">
