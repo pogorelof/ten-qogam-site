@@ -38,7 +38,7 @@
                                             Договорная
                                         @endif
                                     </div>
-                                    <form action="unarchive/2" method="POST">
+                                    <form action="{{route('ad.unarchive', $ad->id)}}" method="POST">
                                         @csrf
                                         <button>
                                             <img src="img/restore.svg" class="w-8 hover:scale-110">
