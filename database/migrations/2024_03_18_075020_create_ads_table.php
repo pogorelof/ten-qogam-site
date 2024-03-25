@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone_number', 11);
             $table->string('photo_path');
             $table->string('price')->nullable();
-//            $table->string('status');
+            $table->integer('view')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

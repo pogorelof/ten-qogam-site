@@ -6,6 +6,7 @@ use App\Models\Ad;
 use App\Models\Category;
 use App\Models\City;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdController extends Controller
 {
@@ -14,6 +15,18 @@ class AdController extends Controller
         $context = [
             'ad' => $ad,
         ];
+
+        $user_id = Auth::id();
+        $viewed_ads = session("viewed_ads_{$user_id}", []);
+
+        if(!isset($viewed_ads[$ad->id])){
+            $viewed_ads[$ad->id] = true;
+            session(["viewed_ads_{$user_id}" => $viewed_ads]);
+
+            $ad->view++;
+            $ad->save();
+        }
+
         return view('detail', $context);
     }
 

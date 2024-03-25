@@ -97,8 +97,10 @@
                     <div class="flex justify-between">
                         <p class="font-light text-xs @if($mode == 'vi') text-black @else text-gray-500 @endif">{{$ad->created_at->translatedFormat('j F')}}</p>
 
-{{--                        TODO: просмотры--}}
-                        <p class="font-light text-xs @if($mode == 'vi') text-black @else text-gray-500 @endif">Просмотров: 50</p>
+                        <p class="font-light text-xs @if($mode == 'vi') text-black @else text-gray-500 @endif">
+                            Просмотров: {{$ad->view}}
+
+                        </p>
                         @if(auth()->check())
                             @if(auth()->user()->favorite_ads->contains($ad))
                                 <form action="{{route('favorite.delete', $ad->id)}}" method="POST">

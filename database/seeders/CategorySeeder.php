@@ -22,5 +22,20 @@ class CategorySeeder extends Seeder
             'name' => 'Услуги',
             'photo_path' => 'img/category/service.svg'
         ]);
+
+        Category::create([
+            'name' => 'Дом',
+            'photo_path' => 'img/category/house.svg'
+        ]);
+
+        Category::create([
+            'name' => 'Одежда',
+            'photo_path' => 'img/category/clothes.svg'
+        ]);
+
+        Category::create([
+            'name' => 'Аренда',
+            'photo_path' => 'img/category/rent.svg'
+        ]);
     }
 }
