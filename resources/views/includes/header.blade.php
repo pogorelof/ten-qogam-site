@@ -11,7 +11,7 @@
         </div>
     </a>
     <div>
-        <a href="" class="text-xl text-gray-300 @if($mode == 'vi') text-white @endif">О нас</a>
+        <a href="{{route('about')}}" class="text-xl text-gray-300 @if($mode == 'vi') text-white @endif">О нас</a>
     </div>
     <div>
         @auth

@@ -12,6 +12,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/category/{category}', [CategoryController::class, 'index'])->name('category.index');
 Route::get('/detail/{ad}', [AdController::class, 'detail'])->name('ad.detail');
 Route::get('/toggle-vision-mode', [VisionModeController::class, 'change'])->name('vision.mode');
+Route::view('about', 'about')->name('about');
 
 Route::middleware('guest')->group(function (){
    Route::get('login', [AuthController::class, 'login'])->name('login');
