@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VisionModeController;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,7 @@ Route::get('/category/{category}', [CategoryController::class, 'index'])->name('
 Route::get('/detail/{ad}', [AdController::class, 'detail'])->name('ad.detail');
 Route::get('/toggle-vision-mode', [VisionModeController::class, 'change'])->name('vision.mode');
 Route::view('about', 'about')->name('about');
+Route::get("/user/{user}", [HomeController::class, "user_profile"])->name("user.profile");
 
 Route::middleware('guest')->group(function (){
    Route::get('login', [AuthController::class, 'login'])->name('login');
@@ -37,4 +39,8 @@ Route::middleware('auth')->group(function (){
 
     Route::get('add', [AdController::class, 'add_form'])->name('ad.add')->middleware('verified');
     Route::post('add', [AdController::class, 'add'])->name('ad.submit');
+
+    Route::get("chats", [ChatController::class, "chats"])->name("chat.chats");
+    Route::get("chat/{recepient}", [ChatController::class, "chat"])->name("chat.chat");
+    Route::post("chat_submit/{chat}/{recepient}", [ChatController::class, "chat_submit"])->name("chat.submit");
 });

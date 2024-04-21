@@ -43,7 +43,7 @@ class AdController extends Controller
     {
         $context = [
             'categories' => Category::get(),
-            'cities' => City::get(),
+            'cities' => City::get()
         ];
         return view('adform', $context);
     }

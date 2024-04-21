@@ -60,4 +60,17 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Ad::class, 'favorites', 'user_id', 'ad_id');
     }
+
+    public function chats()
+    {
+        return $this->belongsToMany(Chat::class, "chats", "user1_id", "user2_id");
+    }
+    public function sentMessages()
+    {
+        return $this->hasMany(Message::class, 'sender_id');
+    }
+    public function receivedMessages()
+    {
+        return $this->hasMany(Message::class, 'recipient_id');
+    }
 }

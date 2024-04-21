@@ -6,7 +6,7 @@
     <div class="text-center">
         <p class="text-3xl font-light">РЕГИСТРАЦИЯ</p>
     </div>
-    <form action="{{route('register_submit')}}" method="POST" class="w-9/12 mx-auto mt-4 space-y-2">
+    <form action="{{route('register_submit')}}" method="POST" class="w-9/12 mx-auto mt-4 space-y-2" enctype="multipart/form-data">
         @csrf
         <div class="flex flex-col space-y-2 text-ce">
             <label for="" class="text-xl font-light">Имя</label>

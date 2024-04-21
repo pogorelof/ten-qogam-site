@@ -3,7 +3,7 @@
 @section('title', 'О нас')
 
 @section('main')
-    <main class="bg-gray-300 rounded-lg md:w-9/12 mx-auto my-5 p-6">
+    <main class="bg-stone-50 rounded-lg md:w-9/12 mx-auto my-5 p-6">
         <div class="">
             <img class="w-72 mx-auto" src="{{asset('img/about/inclusion.png')}}">
         </div>
@@ -11,7 +11,7 @@
             <h2 class="text-3xl font-light">
                 Мы - организация INCLUSION. Наша миссия:
             </h2>
-            <div class="bg-gray-400 rounded-xl p-5 md:w-8/12 mx-auto text-center my-5 shadow-lg shadow-gray-400">
+            <div class="bg-stone-200 rounded-xl p-5 md:w-8/12 mx-auto text-center my-5 shadow-lg shadow-gray-400">
                 <p class='md:px-24 font-serif text-lg'>
                     Защита прав и интересов людей с инвалидностью, содействие
                     широкому участию людей с инвалидностью в спортивной и

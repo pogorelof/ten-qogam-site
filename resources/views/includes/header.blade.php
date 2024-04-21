@@ -17,7 +17,7 @@
         @auth
             <div class="scale-75 md:scale-100 whitespace-nowrap grid grid-cols-2 md:block">
                 <a href="{{route('profile')}}" class="bg-white hover:bg-gray-300 p-4 text-md rounded-l">Профиль</a>
-                <a href="" class="bg-white hover:bg-gray-300 p-4 text-md">Сообщения</a>
+                <a href="{{route('chat.chats')}}" class="bg-white hover:bg-gray-300 p-4 text-md">Сообщения</a>
                 <a href="{{route('ad.add')}}" class="bg-white hover:bg-gray-300 p-4 text-md">Выложить объявление</a>
                 <a href="{{'/logout'}}"
                    class="bg-white hover:bg-gray-300 p-4 text-md rounded-r hover:bg-red-600">Выйти</a>

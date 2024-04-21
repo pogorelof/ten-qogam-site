@@ -29,7 +29,8 @@
             @enderror
             <div class="flex flex-col">
                 <a href="{{route('register')}}" class="text-green-700 hover:text-green-500">Нет аккаунта</a>
-                <a href="" class="text-green-700 hover:text-green-500">Забыли пароль</a>
+{{--                TODO: забыли пароль--}}
+{{--                <a href="" class="text-green-700 hover:text-green-500">Забыли пароль</a>--}}
             </div>
         </form>
     </main>

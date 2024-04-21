@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col">
-                        <a href=""
+                        <a href="{{route("chat.chat", $ad->user->id)}}"
                            class="p-2 bg-green-600 hover:bg-green-800 rounded text-center font-bold text-white">Написать</a>
                     </div>
                 </div>
@@ -70,11 +70,18 @@
                             </div>
                         </div>
                     </div>
+                    @if(auth()->id() != $ad->user->id)
                     <div class="flex flex-col">
-                        <a href=""
+                        <a href="{{route("user.profile", $ad->user->id)}}"
                            class="p-1 bg-green-600 hover:bg-green-800 rounded text-center font-bold text-white">Все
                             объявления</a>
                     </div>
+                    @else
+                        <div class="flex flex-col">
+                            <a href="{{route("profile")}}"
+                               class="p-1 bg-green-600 hover:bg-green-800 rounded text-center font-bold text-white">Мой профиль</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -85,11 +92,12 @@
                     <p class="font-mono text-lg font-bold">ОПИСАНИЕ</p>
                 </div>
                 <div class="p-5">
-                    <p class="px-3 py-1 rounded w-max outline outline-green-600">Коляски</p>
+                    {{-- TODO: Вывод категории --}}
+                    <p class="px-3 py-1 rounded w-max outline outline-green-600">{{$ad->category->name}}</p>
                 </div>
                 <div>
-                    <p class="px-5">
-                        {{$ad->description}}
+                    <p class="px-5 whitespace-pre-line">
+                        {{ $ad->description }}
                     </p>
                 </div>
                 <div class="py-3 space-y-4">

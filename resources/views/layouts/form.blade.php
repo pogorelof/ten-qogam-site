@@ -13,15 +13,9 @@
 @endphp
 
 <body class="bg-green-100 p-10 @if($mode == 'vi') text-xl @endif">
-@if($previous = url()->previous())
-    <a href="{{$previous}}" class="">
-        <img src="img/back.svg" class="w-10 hover:scale-110">
-    </a>
-@else
     <a href="{{url()->route('home')}}" class="">
         <img src="img/back.svg" class="w-10 hover:scale-110">
     </a>
-@endif
 @yield('main')
 
 </html>

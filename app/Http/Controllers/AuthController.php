@@ -8,7 +8,6 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-    //TODO: забыл пароль, смена пароля
     public function login()
     {
         return view("auth.login");
@@ -53,15 +52,23 @@ class AuthController extends Controller
             "email" => "required|email|string|unique:users,email",
             "password" => "required|confirmed",
             "agree" => "required",
-            "photo" => "", //TODO:photo required
+            "photo" => "required",
         ]);
 
-        $user = User::create([
+        $user = [
             "name" => $validated["name"],
             "email" => $validated["email"],
             "password" => bcrypt($validated["password"]),
             "photo_path" => "uploads/user/{$validated["photo"]}",
-        ]);
+        ];
+
+        if($request['photo']){
+            $file = $request->file('photo');
+            $file_name = (string) time() . '_'. $file->getClientOriginalName();
+            $file->move(public_path('uploads/user'), $file_name);
+            $user['photo_path'] = 'uploads/user/' . $file_name;
+        }
+        $user = User::create($user);
 
         $code = $this->generate_verify_code();
         $user->verification_code()->create(["code" => $code]);
