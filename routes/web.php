@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/category/{category}', [CategoryController::class, 'index'])->name('category.index');
+Route::get('/category/{category}', [AdController::class, 'category'])->name('category.index');
+
+Route::get("/search", [AdController::class, "search"])->name("ad.search");
+
 Route::get('/detail/{ad}', [AdController::class, 'detail'])->name('ad.detail');
 Route::get('/toggle-vision-mode', [VisionModeController::class, 'change'])->name('vision.mode');
 Route::view('about', 'about')->name('about');

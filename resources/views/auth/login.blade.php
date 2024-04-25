@@ -12,12 +12,18 @@
                 <label for="" class="text-xl font-light">Email</label>
                 <input type="email" name="email" class="rounded outline outline-1 outline-gray-200 p-2" placeholder="Email">
             </div>
+            @error("email")
+            <p class="text-red-500">Нужно ввести Email!</p>
+            @enderror
 
             <div class="flex flex-col space-y-2 text-ce">
                 <label for="" class="text-xl font-light">Пароль</label>
                 <input type="password" name="password" class="rounded outline outline-1 outline-gray-200 p-2"
                        placeholder="Пароль">
             </div>
+            @error("password")
+            <p class="text-red-500">Нужно ввести пароль!</p>
+            @enderror
 
 
             <button type="submit"

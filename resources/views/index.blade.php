@@ -10,9 +10,9 @@
     <div class="bg-gray-200 text-center py-4 space-y-6 shadow-lg shadow-gray-400
     @if($mode == 'vi') shadow-gray-50 bg-gray-200 @endif
     ">
-        <form action="" class="flex flex-col md:block items-center space-y-3 md:space-y-0">
-            <input type="search" class="rounded p-2 w-full md:w-1/4 " placeholder="Что ищете?">
-            <select class="p-3 rounded h-10 md:w-2/12">
+        <form action="{{route("ad.search")}}" method="GET" class="flex flex-col md:block items-center space-y-3 md:space-y-0">
+            <input name="search" type="search" class="rounded p-2 w-full md:w-1/4 " placeholder="Что ищете?">
+            <select name="city" class="p-3 rounded h-11 md:w-2/12">
                 <option value="all">Вся страна</option>
                 @foreach($cities as $city)
                 <option value="{{$city->id}}">{{$city->name}}</option>
@@ -31,12 +31,12 @@
             <p class="text-2xl">Категории</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-5 w-5/12 mx-auto gap-1">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-7/12 mx-auto gap-1">
             @foreach($categories as $category)
-            <a href='{{route('category.index', $category->id)}}' class="bg-white hover:bg-gray-400 flex flex-col items-center p-2 rounded-md
+            <a href='{{route('category.index', $category->id)}}' class="bg-white hover:bg-gray-400 flex flex-row items-center justify-between p-1 rounded-md
             @if($mode == 'vi') outline outline-1 outline-black @endif">
-                <img class="w-6 " src="{{asset($category->photo_path)}}">
-                <p>{{$category->name}}</p>
+                <img class="w-8 " src="{{asset($category->photo_path)}}">
+                <p class="font-light text-sm">{{$category->name}}</p>
             </a>
             @endforeach
         </div>
@@ -59,8 +59,8 @@
                         {{$ad->title}}
                     </p>
                 </a>
-                <a href="{{route('ad.detail', $ad->id)}}" class="mx-auto">
-                    <img class="rounded-lg h-80 w-72" src="{{asset($ad->photo_path)}}">
+                <a href="{{route('ad.detail', $ad->id)}}" class="mx-auto h-80 w-80">
+                    <img class="rounded-lg object-cover w-full h-full" src="{{asset($ad->photo_path)}}">
                 </a>
                 <div class="text-center">
                     <p class="text-xl">

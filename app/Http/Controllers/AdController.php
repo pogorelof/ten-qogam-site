@@ -30,6 +30,31 @@ class AdController extends Controller
         return view('detail', $context);
     }
 
+    public function category(Category $category)
+    {
+        $ads = $category->ad()->get();
+        $context = [
+            'category' => $category,
+            'ads' => $ads,
+        ];
+        return view('category', $context);
+    }
+
+    public function search(Request $request)
+    {
+        $text = $request->input("search");
+        $city = $request->input("city");
+        //TODO: когда поменяем бд на mysql проверить поиск
+        $ads = Ad::whereRaw("LOWER(title) LIKE LOWER(?)", ["%".$text."%"])->get();
+        if($city != "all"){
+            $ads = $ads->where("city_id", $city);
+        }
+        $context = [
+            "ads" => $ads
+        ];
+        return view("searched", $context);
+    }
+
     public function archive()
     {
         $context = [

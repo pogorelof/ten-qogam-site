@@ -14,28 +14,49 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Коляски',
+            'name' => 'Средства передвижения',
             'photo_path' => 'img/category/wheelchair.svg'
         ]);
 
         Category::create([
+            'name' => 'Реабилитация',
+            'photo_path' => 'img/category/rec.svg'
+        ]);
+
+        Category::create([
+            'name' => 'Для слабовидящих',
+            'photo_path' => 'img/category/glasses.svg'
+        ]);
+
+        Category::create([
+            'name' => 'Для слабослышащих',
+            'photo_path' => 'img/category/hear.svg'
+        ]);
+
+        Category::create([
+            'name' => 'Домашние приспособления',
+            'photo_path' => 'img/category/house.svg'
+        ]);
+        Category::create([
+            'name' => 'Для детей',
+            'photo_path' => 'img/category/toy.svg'
+        ]);
+        Category::create([
+            'name' => 'Медицинское оборудование',
+            'photo_path' => 'img/category/med.svg'
+        ]);
+        Category::create([
+            'name' => 'Трудоустройство',
+            'photo_path' => 'img/category/work.svg'
+        ]);
+        Category::create([
             'name' => 'Услуги',
             'photo_path' => 'img/category/service.svg'
         ]);
-
         Category::create([
-            'name' => 'Дом',
-            'photo_path' => 'img/category/house.svg'
-        ]);
-
-        Category::create([
-            'name' => 'Одежда',
-            'photo_path' => 'img/category/clothes.svg'
-        ]);
-
-        Category::create([
-            'name' => 'Аренда',
-            'photo_path' => 'img/category/rent.svg'
+            'name' => 'Прочее',
+            'photo_path' => 'img/category/other.svg'
         ]);
     }
+
 }

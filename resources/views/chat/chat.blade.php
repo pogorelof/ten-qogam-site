@@ -60,4 +60,10 @@
             </form>
         </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const chatAnchor = document.getElementById('chatAnchor');
+            chatAnchor.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        });
+    </script>
 @endsection

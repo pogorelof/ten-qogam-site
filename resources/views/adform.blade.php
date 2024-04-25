@@ -26,7 +26,7 @@
             </div>
             <form action="{{route('ad.submit')}}" method="POST" class="space-y-3" enctype="multipart/form-data">
                 @csrf
-                <div class="flex flex-col space-y-2">
+                <div class="flex flex-col space-y-2 ">
                     <label for="" class="text-xl font-light">Вставить фотографию</label>
                     <input name="photo" type="file" class="
                     file:border-0 file:bg-green-700 file:rounded-lg file:p-2
@@ -34,16 +34,22 @@
                     file:text-white
                     ">
                 </div>
+                @error('photo')
+                <p class="text-red-500">{{$message}}</p>
+                @enderror
 
                 <div class="flex flex-col space-y-2">
                     <label for="" class="text-xl font-light">Название</label>
-                    <input name="name" type="text" class="border p-2 rounded-md" placeholder="Название">
+                    <input name="name" type="text" class="border p-2 rounded-md @error('name') outline outline-1 outline-red-200 @enderror" placeholder="Название">
                 </div>
+                @error('name')
+                <p class="text-red-500">{{$message}}</p>
+                @enderror
 
                 <div class="grid md:grid-cols-2 gap-3">
                     <div class="flex flex-col space-y-2">
                         <label for="" class="text-xl font-light flex items-center">Цена <p class="text-sm">(Оставьте пустым если цена договорная)</p> </label>
-                        <input name="price" type="text" class="border p-2 rounded-md" placeholder="Цена, тенге">
+                        <input name="price" type="text" class="border p-2 rounded-md @error('price') outline outline-1 outline-red-200 @enderror" placeholder="Цена, тенге">
                     </div>
 
                     <div class="flex flex-col space-y-2">
@@ -56,17 +62,23 @@
                             </optgroup>
                         </select>
                     </div>
+                    @error('price')
+                    <p class="text-red-500">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <div class="flex flex-col space-y-2">
                     <label for="" class="text-xl font-light">Описание</label>
-                    <textarea name="description" type="text" class="border p-2 rounded-md resize-none h-36"></textarea>
+                    <textarea name="description" type="text" class="border p-2 rounded-md resize-none h-36 @error('description') outline outline-1 outline-red-200 @enderror"></textarea>
                 </div>
+                @error('description')
+                <p class="text-red-500">{{$message}}</p>
+                @enderror
 
                 <div class="grid md:grid-cols-2 gap-3">
                     <div class="flex flex-col space-y-2">
                         <label for="" class="text-xl font-light">Номер телефона</label>
-                        <input name="phone" type="text" class="border p-2 rounded-md" value="+7">
+                        <input name="phone" type="text" class="border p-2 rounded-md @error('phone') outline outline-1 outline-red-200 @enderror" value="+7">
                     </div>
 
                     <div class="flex flex-col space-y-2">
@@ -79,6 +91,9 @@
                             </optgroup>
                         </select>
                     </div>
+                    @error('phone')
+                    <p class="text-red-500">{{$message}}</p>
+                    @enderror
                 </div>
 
                 <button type="submit"

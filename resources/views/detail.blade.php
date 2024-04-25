@@ -24,8 +24,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 mx-auto gap-2 w-11/12">
-            <div class="bg-white rounded-lg p-5 col-span-2">
-                <div class=""><img src="{{asset($ad->photo_path)}}" class="w-5/12 mx-auto rounded-sm"></div>
+            <div class="bg-white rounded-lg p-5 col-span-2 flex items-center justify-center">
+                <div class=""><img src="{{asset($ad->photo_path)}}" class="w-6/12 min-w-96  mx-auto rounded-sm"></div>
             </div>
             <div class="grid md:grid-rows-2 gap-2">
                 <div class="bg-white rounded-lg p-5 flex flex-col justify-around space-y-4">
@@ -50,8 +50,10 @@
                         </div>
                     </div>
                     <div class="flex flex-col">
+                        @if(auth()->id() != $ad->user->id)
                         <a href="{{route("chat.chat", $ad->user->id)}}"
                            class="p-2 bg-green-600 hover:bg-green-800 rounded text-center font-bold text-white">Написать</a>
+                        @endif
                     </div>
                 </div>
                 <div class="bg-white rounded-lg p-5 flex flex-col justify-between space-y-4">
