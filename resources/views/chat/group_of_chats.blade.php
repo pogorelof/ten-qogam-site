@@ -27,7 +27,7 @@
                             </div>
                             <div>
                                 <p class="font-light text-sm">
-                                    {{date('d.m.Y H:m', strtotime($chat->last_message_at))}}
+                                    {{date('d.m.Y H:i', strtotime($chat->last_message_at))}}
                                 </p>
                             </div>
                         </div>
