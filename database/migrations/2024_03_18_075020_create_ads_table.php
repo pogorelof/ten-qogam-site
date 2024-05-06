@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('city_id')->constrained()->cascadeOnDelete();
             $table->string('title', 100);
             $table->text('description');
-            $table->string('phone_number', 11);
+            $table->string('phone_number', 12);
             $table->string('photo_path');
             $table->string('price')->nullable();
             $table->integer('view')->default(0);

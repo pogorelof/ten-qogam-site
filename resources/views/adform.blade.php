@@ -39,8 +39,14 @@
                 @enderror
 
                 <div class="flex flex-col space-y-2">
-                    <label for="" class="text-xl font-light">Название</label>
-                    <input name="name" type="text" class="border p-2 rounded-md @error('name') outline outline-1 outline-red-200 @enderror" placeholder="Название">
+                    <div class="flex items-center space-x-3">
+                        <label for="" class="text-xl font-light">Название</label>
+                        <div id="edit2" class="bg-purple-700 p-1 rounded-lg hover:bg-purple-800 hover:cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-500">
+                            <img src="{{asset("img/correct.svg")}}" class="w-6">
+                        </div>
+                        <p id="descriprion2" class="text-xs font-light opacity-0 transition-opacity duration-500">- поправить грамматику нейросетью</p>
+                    </div>
+                    <input id="title" name="name" type="text" class="border p-2 rounded-md @error('name') outline outline-1 outline-red-200 @enderror" placeholder="Название">
                 </div>
                 @error('name')
                 <p class="text-red-500">{{$message}}</p>
@@ -68,8 +74,14 @@
                 </div>
 
                 <div class="flex flex-col space-y-2">
-                    <label for="" class="text-xl font-light">Описание</label>
-                    <textarea name="description" type="text" class="border p-2 rounded-md resize-none h-36 @error('description') outline outline-1 outline-red-200 @enderror"></textarea>
+                    <div class="flex items-center space-x-3">
+                        <label for="" class="text-xl font-light">Описание</label>
+                        <div id="edit" class="bg-purple-700 p-1 rounded-lg hover:bg-purple-800 hover:cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-500">
+                            <img src="{{asset("img/write.svg")}}" class="w-6">
+                        </div>
+                        <p id="descriprion" class="text-xs font-light opacity-0 transition-opacity duration-500">- украсить текст нейросетью</p>
+                    </div>
+                    <textarea id="textar" name="description" type="text" class="border p-2 rounded-md resize-none h-36 @error('description') outline outline-1 outline-red-200 @enderror"></textarea>
                 </div>
                 @error('description')
                 <p class="text-red-500">{{$message}}</p>
@@ -104,4 +116,87 @@
             </form>
         </div>
     </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        //Description button
+        const edit = document.getElementById("edit")
+        const descriprion = document.getElementById("descriprion")
+
+        edit.addEventListener("mouseover", function (){
+            descriprion.classList.add("opacity-70")
+        })
+        edit.addEventListener("mouseout", function (){
+            descriprion.classList.remove("opacity-70")
+        })
+
+        const text_area = $("#textar")
+
+        edit.addEventListener("click", function () {
+            const text = text_area.val()
+
+            $.ajax({
+                url: "/text_edit",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': "{{csrf_token()}}"
+                },
+                data: {
+                    text: text
+                },
+                beforeSend: function () {
+                    text_area.addClass("text-gray-300")
+                    edit.classList.add("bg-gray-700")
+                    edit.classList.add("pointer-events-none")
+                    text_area.val("Подождите немного...")
+                },
+                success: function (res){
+                    text_area.removeClass("text-gray-300")
+                    edit.classList.remove("bg-gray-700")
+                    edit.classList.remove("pointer-events-none")
+                    text_area.val(res.data)
+                }
+            })
+        })
+
+        //Title button
+        const edit2 = document.getElementById("edit2")
+        const descriprion2 = document.getElementById("descriprion2")
+
+        edit2.addEventListener("mouseover", function (){
+            descriprion2.classList.add("opacity-70")
+        })
+        edit2.addEventListener("mouseout", function (){
+            descriprion2.classList.remove("opacity-70")
+        })
+
+        const title = $("#title")
+
+        edit2.addEventListener("click", function () {
+            const text = title.val()
+
+            $.ajax({
+                url: "/grammar_edit",
+                method: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': "{{csrf_token()}}"
+                },
+                data: {
+                    text: text
+                },
+                beforeSend: function () {
+                    title.addClass("text-gray-300")
+                    edit2.classList.add("bg-gray-700")
+                    edit2.classList.add("pointer-events-none")
+                    title.val("Подождите немного...")
+                },
+                success: function (res){
+                    title.removeClass("text-gray-300")
+                    edit2.classList.remove("bg-gray-700")
+                    edit2.classList.remove("pointer-events-none")
+                    title.val(res.data)
+                }
+            })
+        })
+    </script>
 @endsection

@@ -4,6 +4,7 @@ use App\Http\Controllers\AdController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\GptController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VisionModeController;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/category/{category}', [AdController::class, 'category'])->name('category.index');
 
-Route::get("/search", [AdController::class, "search"])->name("ad.search");
+Route::get("/search", [GptController::class, "search"])->name("ad.search");
 
 Route::get('/detail/{ad}', [AdController::class, 'detail'])->name('ad.detail');
 Route::get('/toggle-vision-mode', [VisionModeController::class, 'change'])->name('vision.mode');
@@ -46,4 +47,7 @@ Route::middleware('auth')->group(function (){
     Route::get("chats", [ChatController::class, "chats"])->name("chat.chats");
     Route::get("chat/{recepient}", [ChatController::class, "chat"])->name("chat.chat");
     Route::post("chat_submit/{chat}/{recepient}", [ChatController::class, "chat_submit"])->name("chat.submit");
+
+    Route::post("text_edit", [GptController::class, "text_edit"])->name("text_edit");
+    Route::post("grammar_edit", [GptController::class, "grammar_edit"])->name("grammar_edit");
 });

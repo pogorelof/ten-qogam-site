@@ -10,15 +10,13 @@
     <div class="bg-gray-200 text-center py-4 space-y-6 shadow-lg shadow-gray-400
     @if($mode == 'vi') shadow-gray-50 bg-gray-200 @endif
     ">
-        <form action="{{route("ad.search")}}" method="GET" class="flex flex-col md:block items-center space-y-3 md:space-y-0">
-            <input name="search" type="search" class="rounded p-2 w-full md:w-1/4 " placeholder="Что ищете?">
-            <select name="city" class="p-3 rounded h-11 md:w-2/12">
-                <option value="all">Вся страна</option>
-                @foreach($cities as $city)
-                <option value="{{$city->id}}">{{$city->name}}</option>
-                @endforeach
-            </select>
-            <button class="p-2 w-24 bg-gray-200 hover:bg-gray-400 rounded text-gray-600 border border-gray-400
+        <form action="{{route("ad.search")}}" method="GET" class="flex flex-col items-center space-y-3">
+            <p id="header" class="transition-opacity duration-500">
+                Скажите нейросети что вы ищете
+            </p>
+
+            <input id="search" name="search" type="search" class="rounded text-center p-2 w-24 transition-all duration-300 focus:outline-none border border-green-600 border-2" placeholder="" autocomplete="off">
+            <button id="button_search" class="hidden p-2 w-20 bg-green-500 hover:bg-green-300 rounded text-white font-sans text-sm
             @if($mode == 'vi')
                 text-black border-black
             @endif
@@ -81,4 +79,30 @@
         </div>
     </div>
 </main>
+    <script>
+        const element = document.getElementById("search");
+        const button = document.getElementById("button_search");
+        const header = document.getElementById("header")
+        const w = "w-1/4"
+        const h = "h-24"
+        element.addEventListener("click", function() {
+            if (!this.classList.contains(w)) {
+                this.classList.add(w);
+                this.classList.add(h);
+                button.classList.remove("hidden");
+                header.classList.add("opacity-0");
+            }
+        })
+
+        document.addEventListener("click", function(event) {
+            var clickedElement = event.target;
+
+            if (clickedElement.id !== "search") {
+                element.classList.remove(w);
+                element.classList.remove(h);
+                button.classList.add("hidden");
+                header.classList.remove("opacity-0");
+            }
+        });
+    </script>
 @endsection
