@@ -29,7 +29,7 @@
             <p class="text-2xl">Категории</p>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-7/12 mx-auto gap-1">
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-9/12 md:w-7/12 mx-auto gap-1">
             @foreach($categories as $category)
             <a href='{{route('category.index', $category->id)}}' class="bg-white hover:bg-gray-400 flex flex-row items-center justify-between p-1 rounded-md
             @if($mode == 'vi') outline outline-1 outline-black @endif">
