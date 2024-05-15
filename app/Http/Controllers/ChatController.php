@@ -7,8 +7,16 @@ use App\Models\Message;
 use App\Models\User;
 use Illuminate\Http\Request;
 
+/**
+ * Chat management controller
+ */
 class ChatController extends Controller
 {
+    /**
+     * Show page with chats
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function chats()
     {
         $id = auth()->id();
@@ -17,6 +25,12 @@ class ChatController extends Controller
         return view("chat.group_of_chats", $context);
     }
 
+    /**
+     * Show page of chat
+     *
+     * @param User $recepient
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\View\View
+     */
     public function chat(User $recepient)
     {
         $id = auth()->id();
@@ -51,6 +65,14 @@ class ChatController extends Controller
         return view("chat.chat", $context);
     }
 
+    /**
+     * Handle sending a message to the chat room
+     *
+     * @param Request $request Request with message
+     * @param Chat $chat Chat id
+     * @param User $recepient Message recipient
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function chat_submit(Request $request, Chat $chat, User $recepient)
     {
         $text = $request["text"];

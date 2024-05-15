@@ -6,6 +6,9 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * Checking the validation of the user's e-mail address
+ */
 class VerifyMailIsConfirmed
 {
     /**
