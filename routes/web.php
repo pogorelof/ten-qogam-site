@@ -44,10 +44,11 @@ Route::middleware('auth')->group(function (){
     Route::get('add', [AdController::class, 'add_form'])->name('ad.add')->middleware('verified');
     Route::post('add', [AdController::class, 'add'])->name('ad.submit');
 
-    Route::get("chats", [ChatController::class, "chats"])->name("chat.chats");
-    Route::get("chat/{recepient}", [ChatController::class, "chat"])->name("chat.chat");
-    Route::post("chat_submit/{chat}/{recepient}", [ChatController::class, "chat_submit"])->name("chat.submit");
+    Route::get("chats", [ChatController::class, "chats"])->name("chat.chats")->middleware('verified');
+    Route::get("chat/{recepient}", [ChatController::class, "chat"])->name("chat.chat")->middleware('verified');
+    Route::post("chat_submit/{chat}/{recepient}", [ChatController::class, "chat_submit"])->name("chat.submit")->middleware('verified');
 
     Route::post("text_edit", [GptController::class, "text_edit"])->name("text_edit");
     Route::post("grammar_edit", [GptController::class, "grammar_edit"])->name("grammar_edit");
+    Route::get("recommendation", [GptController::class, "recommendation"])->name("recomendation");
 });

@@ -41,12 +41,16 @@
                 <div class="flex flex-col space-y-2">
                     <div class="flex items-center space-x-3">
                         <label for="" class="text-xl font-light">Название</label>
-                        <div id="edit2" class="bg-purple-700 p-1 rounded-lg hover:bg-purple-800 hover:cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-500">
+                        <div id="edit2"
+                             class="bg-purple-700 p-1 rounded-lg hover:bg-purple-800 hover:cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-500">
                             <img src="{{asset("img/correct.svg")}}" class="w-6">
                         </div>
-                        <p id="descriprion2" class="text-xs font-light opacity-0 transition-opacity duration-500">- поправить грамматику нейросетью</p>
+                        <p id="descriprion2" class="text-xs font-light opacity-0 transition-opacity duration-500">-
+                            поправить грамматику нейросетью</p>
                     </div>
-                    <input id="title" name="name" type="text" class="border p-2 rounded-md @error('name') outline outline-1 outline-red-200 @enderror" placeholder="Название">
+                    <input id="title" name="name" type="text"
+                           class="border p-2 rounded-md @error('name') outline outline-1 outline-red-200 @enderror"
+                           placeholder="Название">
                 </div>
                 @error('name')
                 <p class="text-red-500">{{$message}}</p>
@@ -54,8 +58,11 @@
 
                 <div class="grid md:grid-cols-2 gap-3">
                     <div class="flex flex-col space-y-2">
-                        <label for="" class="text-xl font-light flex items-center">Цена <p class="text-sm">(Оставьте пустым если цена договорная)</p> </label>
-                        <input name="price" type="text" class="border p-2 rounded-md @error('price') outline outline-1 outline-red-200 @enderror" placeholder="Цена, тенге">
+                        <label for="" class="text-xl font-light flex items-center">Цена <p class="text-sm">(Оставьте
+                                пустым если цена договорная)</p></label>
+                        <input name="price" type="text"
+                               class="border p-2 rounded-md @error('price') outline outline-1 outline-red-200 @enderror"
+                               placeholder="Цена, тенге">
                     </div>
 
                     <div class="flex flex-col space-y-2">
@@ -76,12 +83,15 @@
                 <div class="flex flex-col space-y-2">
                     <div class="flex items-center space-x-3">
                         <label for="" class="text-xl font-light">Описание</label>
-                        <div id="edit" class="bg-purple-700 p-1 rounded-lg hover:bg-purple-800 hover:cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-500">
+                        <div id="edit"
+                             class="bg-purple-700 p-1 rounded-lg hover:bg-purple-800 hover:cursor-pointer opacity-70 hover:opacity-100 transition-opacity duration-500">
                             <img src="{{asset("img/write.svg")}}" class="w-6">
                         </div>
-                        <p id="descriprion" class="text-xs font-light opacity-0 transition-opacity duration-500">- украсить текст нейросетью</p>
+                        <p id="descriprion" class="text-xs font-light opacity-0 transition-opacity duration-500">-
+                            украсить текст нейросетью</p>
                     </div>
-                    <textarea id="textar" name="description" type="text" class="border p-2 rounded-md resize-none h-36 @error('description') outline outline-1 outline-red-200 @enderror"></textarea>
+                    <textarea id="textar" name="description" type="text"
+                              class="border p-2 rounded-md resize-none h-36 @error('description') outline outline-1 outline-red-200 @enderror"></textarea>
                 </div>
                 @error('description')
                 <p class="text-red-500">{{$message}}</p>
@@ -90,7 +100,9 @@
                 <div class="grid md:grid-cols-2 gap-3">
                     <div class="flex flex-col space-y-2">
                         <label for="" class="text-xl font-light">Номер телефона</label>
-                        <input name="phone" type="text" class="border p-2 rounded-md @error('phone') outline outline-1 outline-red-200 @enderror" value="+7">
+                        <input name="phone" type="text"
+                               class="border p-2 rounded-md @error('phone') outline outline-1 outline-red-200 @enderror"
+                               value="+7">
                     </div>
 
                     <div class="flex flex-col space-y-2">
@@ -123,10 +135,10 @@
         const edit = document.getElementById("edit")
         const descriprion = document.getElementById("descriprion")
 
-        edit.addEventListener("mouseover", function (){
+        edit.addEventListener("mouseover", function () {
             descriprion.classList.add("opacity-70")
         })
-        edit.addEventListener("mouseout", function (){
+        edit.addEventListener("mouseout", function () {
             descriprion.classList.remove("opacity-70")
         })
 
@@ -147,26 +159,30 @@
                 beforeSend: function () {
                     text_area.addClass("text-gray-300")
                     edit.classList.add("bg-gray-700")
+                    edit.classList.remove("bg-purple-700")
                     edit.classList.add("pointer-events-none")
                     text_area.val("Подождите немного...")
                 },
-                success: function (res){
+                success: function (res) {
                     text_area.removeClass("text-gray-300")
                     edit.classList.remove("bg-gray-700")
+                    edit.classList.add("bg-purple-700")
                     edit.classList.remove("pointer-events-none")
                     text_area.val(res.data)
                 }
             })
+
+
         })
 
         //Title button
         const edit2 = document.getElementById("edit2")
         const descriprion2 = document.getElementById("descriprion2")
 
-        edit2.addEventListener("mouseover", function (){
+        edit2.addEventListener("mouseover", function () {
             descriprion2.classList.add("opacity-70")
         })
-        edit2.addEventListener("mouseout", function (){
+        edit2.addEventListener("mouseout", function () {
             descriprion2.classList.remove("opacity-70")
         })
 
@@ -186,13 +202,15 @@
                 },
                 beforeSend: function () {
                     title.addClass("text-gray-300")
+                    edit2.classList.remove("bg-purple-700")
                     edit2.classList.add("bg-gray-700")
                     edit2.classList.add("pointer-events-none")
                     title.val("Подождите немного...")
                 },
-                success: function (res){
+                success: function (res) {
                     title.removeClass("text-gray-300")
                     edit2.classList.remove("bg-gray-700")
+                    edit2.classList.add("bg-purple-700")
                     edit2.classList.remove("pointer-events-none")
                     title.val(res.data)
                 }

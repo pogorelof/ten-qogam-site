@@ -15,7 +15,7 @@
                 Скажите нейросети что вы ищете
             </p>
 
-            <input id="search" name="search" type="search" class="rounded text-center p-2 w-24 transition-all duration-300 focus:outline-none border border-green-600 border-2" placeholder="" autocomplete="off">
+            <input id="search" name="search" type="search" class="rounded text-center p-2 w-24 transition-all duration-300 focus:outline-none border-green-600 border-2" placeholder="" autocomplete="off">
             <button id="button_search" class="hidden p-2 w-20 bg-green-500 hover:bg-green-300 rounded text-white font-sans text-sm
             @if($mode == 'vi')
                 text-black border-black
@@ -89,6 +89,7 @@
             if (!this.classList.contains(w)) {
                 this.classList.add(w);
                 this.classList.add(h);
+                this.classList.remove("w-24");
                 button.classList.remove("hidden");
                 header.classList.add("opacity-0");
             }
@@ -98,6 +99,7 @@
             var clickedElement = event.target;
 
             if (clickedElement.id !== "search") {
+                element.classList.add("w-24");
                 element.classList.remove(w);
                 element.classList.remove(h);
                 button.classList.add("hidden");

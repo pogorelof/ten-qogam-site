@@ -62,8 +62,12 @@
             </div>
         </div>
         <div class="bg-white rounded-xl mt-5 p-5 h-max">
-            <div class="py-3">
+            <div class="py-3 flex items-center space-x-2">
                 <p class="text-xl p-1 font-light outline outline-1 outline-yellow-600 rounded w-max">Избранное</p>
+                <a href="{{route("recomendation")}}" class="flex bg-green-700 opacity-70 hover:bg-green-800 hover:cursor-pointer items-end p-1 rounded space-x-0.5">
+                    <p class="font-bold text-white">Рекомендации</p>
+                    <p class="font-light text-white text-xs">от нейросети</p>
+                </a>
             </div>
             <div class="flex flex-col py-5 space-y-2">
                 @if(count(auth()->user()->favorite_ads) != 0)
